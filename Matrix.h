@@ -2,8 +2,7 @@
 #define _MATRIX_H_
 
 #include <vector>
-
-using namespace std;
+using std::ostream;
 
 template<class mat_type>
 class Matrix;
@@ -19,14 +18,14 @@ class Matrix
 	mat_type& operator()(const unsigned&, const unsigned&);
 
 private:
-	vector<vector<mat_type>> *mat;
+	std::vector<std::vector<mat_type>> mat;
 	int dimx;
 	int dimy;
 	
 
 public:
 
-	Matrix(int dim_x = 0, int dim_y = 0, mat_type inst = 0);
+	Matrix(int dim_x, int dim_y, mat_type inst);
 
 };
 

@@ -6,11 +6,12 @@
 #include "Matrix.cpp"
 
 
+using namespace std;
 
 int main()
 {
     Matrix<int>  *m = new Matrix<int>(3, 4, 0);
 
-    std::cout << *m << endl;
+    cout << *m;
 
 }
