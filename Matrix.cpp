@@ -16,6 +16,14 @@ Matrix<mat_type>::Matrix(int dim_x, int dim_y, mat_type inst) :
 		mat.push_back(vector<mat_type>(dim_y, inst));
 }
 
+template <class mat_type>
+Matrix<mat_type>::Matrix(int dim_x, int dim_y) :
+	dimx(dim_x), dimy(dim_y)
+{
+	for (int i = 0; i < dim_x; i++)
+		mat.push_back(vector<mat_type>(dim_y));
+}
+
 
 template <class mat_type>
 ostream& operator<<(ostream& os, const Matrix<mat_type>& m)
@@ -44,4 +52,11 @@ ostream& operator<<(ostream& os, const Matrix<mat_type>& m)
 
 	os << "]" << endl;
 	return os;
+}
+
+
+template <typename mat_type>
+mat_type& Matrix<mat_type>::operator() (size_t x, size_t y)
+{
+	return mat[x][y];
 }
