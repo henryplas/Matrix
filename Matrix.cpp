@@ -2,23 +2,33 @@
 using namespace std;
 
 template <class mat_type>
-Matrix<mat_type>::Matrix(int dim_x = 0, int dim_y = 0, mat_type inst = 0) :
+Matrix<mat_type>::Matrix(int dim_x, int dim_y, mat_type inst) :
 	dimx(dim_x), dimy(dim_y)
 {
 	mat = new vector<vector<mat_type>>(dim_x);
-	for (auto i : dim_x)
+	for (int i = 0; i < dim_x; i ++)
 		mat->push_back(vector<mat_type>(dim_y, inst));
 
 }
 
-ostream& operator<<(ostream& os, const Matrix& m)
+
+template <class mat_type>
+ostream& operator<<(ostream& os, const Matrix<mat_type>& m)
 {
-	for (int i = 0; i < m.size(); ++i) {
-		os << m.p[i][0];
-		for (int j = 1; j < m[i].size(); ++j) {
-			os << " " << m.p[i][j];
+	os << "[";
+	for (int i = 0; i < m.mat->size(); ++i) 
+	{
+
+		os << "[";
+
+		for (int j = 1; j < m.mat[i]->size(); ++j) 
+		{
+			os << " " << m.mat[i][j];
 		}
-		os << endl;
+
+		os << "]" << endl;
 	}
+
+	os << "]" << endl;
 	return os;
 }

@@ -5,11 +5,19 @@
 
 using namespace std;
 
+template<class mat_type>
+class Matrix;
+
+template<class mat_type>
+ostream& operator<<(ostream&, const Matrix<mat_type>& m);
+
 template <class mat_type>
 class Matrix
 {
-	friend std::ostream& operator<<(std::ostream&, const Matrix&);
+	friend ostream& operator<< <>(ostream&, const Matrix<mat_type>& m);
+
 	mat_type& operator()(const unsigned&, const unsigned&);
+
 private:
 	vector<vector<mat_type>> *mat;
 	int dimx;

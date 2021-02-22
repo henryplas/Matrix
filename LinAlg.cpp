@@ -9,6 +9,8 @@
 
 int main()
 {
-    Matrix<int> * m = new Matrix<int>(3, 4, 0);
+    Matrix<int>  *m = new Matrix<int>(3, 4, 0);
+
+    std::cout << *m << endl;
 
 }
