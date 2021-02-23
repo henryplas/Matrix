@@ -27,6 +27,7 @@ int main()
 
     cout << q << endl;
 
+    
     cout << q.transpose() << endl;
 
 
