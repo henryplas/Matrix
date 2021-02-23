@@ -28,6 +28,10 @@ public:
 	Matrix(int dim_x, int dim_y, mat_type inst);
 	Matrix(int dim_x, int dim_y);
 
+	Matrix(std::vector<std::vector<mat_type>> &obj);
+
+	Matrix& transpose();
+	Matrix& transpose(Matrix& m);
 
 	mat_type& operator() (const size_t a, const size_t b);
 
