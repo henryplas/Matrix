@@ -28,12 +28,13 @@ public:
 	Matrix(int dim_x, int dim_y, mat_type inst);
 	Matrix(int dim_x, int dim_y);
 	Matrix(std::vector<std::vector<mat_type>> &obj);
-	Matrix(Matrix<mat_type>& m);
+	Matrix(const Matrix<mat_type>& m);
 
 	Matrix transpose();
 	//Matrix& transpose(Matrix& m);
-	std::pair<std::size_t, std::size_t> shape();
-	std::vector<std::vector<mat_type>> vec();
+	Matrix matmul(Matrix& m);
+	std::pair<std::size_t, std::size_t> shape() const;
+	std::vector<std::vector<mat_type>> vec() const;
 	mat_type& operator() (const size_t a, const size_t b);
 	//Matrix& operator=(const Matrix& m);
 

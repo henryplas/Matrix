@@ -27,9 +27,19 @@ Matrix<mat_type>::Matrix(vector<vector<mat_type>> & m) :
 
 
 template<typename mat_type>
-Matrix<mat_type>::Matrix(Matrix<mat_type>& m)
+Matrix<mat_type>::Matrix(const Matrix<mat_type>& m)
 {
-	*this = m;
+	vector<vector<mat_type>> a(m.shape().first, vector<mat_type>(m.shape().second, 0));
+
+	for (size_t i = 0; i < a.size(); i++)
+	{
+		for (size_t j = 0; j < a[0].size(); j++)
+		{
+			a[i][j] = m.vec()[i][j];
+		}
+	}
+
+	*this = Matrix<mat_type>(a);
 }
 
 
@@ -53,20 +63,49 @@ Matrix<mat_type> Matrix<mat_type>::transpose()
 }
 
 
+
+
 //TODO
 //Matrix& Matrix::transpose(Matrix& m)
 //{
 //
 //}
 
+template <class mat_type>
+Matrix<mat_type> Matrix<mat_type>::matmul(Matrix<mat_type>& m)
+{
+	vector<vector<mat_type>> a = this->vec();
+	vector<vector<mat_type>> b = m.vec();
+	vector<vector<mat_type>> c(a.size(), vector<mat_type>(b[0].size(), 0));
+
+	if (a[0].size() != b.size())
+	{
+		throw "Matrices don't match (H x W @ W x H)";
+	}
+
+	for (int i = 0; i < c.size(); ++i) 
+	{
+		for (int j = 0; j < c[0].size(); ++j) 
+		{
+			for (int k = 0; k < a[0].size(); ++k) 
+			{
+				c[i][j] += (a[i][k] * b[k][j]);
+			}
+		}
+	}
+		
+	Matrix ret(c);
+	return ret;
+}
+
 template<typename mat_type>
-pair<size_t, size_t> shape()
+pair<size_t, size_t> Matrix<mat_type>::shape() const
 {
 	return make_pair(this->mat.size(), this->mat[0].size());
 }
 
 template<typename mat_type>
-vector<vector<mat_type>> Matrix<mat_type>::vec()
+vector<vector<mat_type>> Matrix<mat_type>::vec() const
 {
 	return mat;
 }

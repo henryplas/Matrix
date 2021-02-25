@@ -27,8 +27,12 @@ int main()
 
     cout << q << endl;
 
+    Matrix<int> qw(q.transpose());
+    cout << qw << endl;
+
+    cout << q.matmul(qw) << endl;
+
     
-    cout << q.transpose() << endl;
 
-
+    return 0;
 }
