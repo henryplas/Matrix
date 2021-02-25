@@ -35,7 +35,7 @@ public:
 	std::pair<std::size_t, std::size_t> shape();
 	std::vector<std::vector<mat_type>> vec();
 	mat_type& operator() (const size_t a, const size_t b);
-	Matrix& operator=(const Matrix& m);
+	//Matrix& operator=(const Matrix& m);
 
 };
 

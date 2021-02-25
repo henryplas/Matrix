@@ -107,11 +107,11 @@ mat_type& Matrix<mat_type>::operator() (size_t x, size_t y)
 	return mat[x][y];
 }
 
-template <typename mat_type>
-Matrix<mat_type>& Matrix<mat_type>::operator=(const Matrix<mat_type>& m)
-{
-	Matrix<mat_type> ret(m.vec());
-	return ret;
-}
+//template <typename mat_type>
+//Matrix<mat_type>& Matrix<mat_type>::operator=(const Matrix<mat_type>& m)
+//{
+//	Matrix<mat_type> ret(m.vec());
+//	return ret;
+//}
 
 
